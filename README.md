@@ -10,6 +10,35 @@ This MATLAB project tests out some time-series fitting algorithms and plots the 
 >> main("data/data2.csv", "configs/config_poly.csv", "plots/poly_fit2.png")
 >> main("data/data_no_noise.csv", "configs/config_poly.csv", "plots/poly_no_noise.png")
 ```
+This program's entry point is `main.m`. It makes calls to `fitPolynomial.m` and `hpRidge.m` based on the fitting algorithm selected in the config. Then the ground truth and inferred trend vectors are plotted in `plotData.m`. The data generation script, `cosNoise.m` is run independently to generate the data and save it to CSV. 
+
+```
+.
+├── README.md
+├── configs
+│   ├── config_hp_ridge.csv
+│   ├── config_none.csv
+│   └── config_poly.csv
+├── cosNoiseData.m
+├── data
+│   ├── data.csv
+│   ├── data2.csv
+│   └── data_no_noise.csv
+├── fitPolynomial.m
+├── hpRidge.m
+├── main.m
+├── plotData.m
+└── plots
+    ├── data.png
+    ├── data2.png
+    ├── data_no_noise.png
+    ├── hp_ridge_fit.png
+    ├── hp_ridge_fit2.png
+    ├── no_fit.png
+    ├── poly_fit.png
+    ├── poly_fit2.png
+    └── poly_no_noise.png
+```
 
 ## Data Generation and Format
 The cosNoiseData.m generates a 50 point sequence as daily values for a cosine function with a 60 day period and amplitude 1.
