@@ -1,0 +1,5 @@
+﻿key,value,comment
+mean_value_line,yes,none
+data_trend_type_fit_line,hp_ridge,0.01_0.1_1_10_100
+xlabel,date,none
+ylabel,value,none
