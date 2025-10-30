@@ -19,7 +19,7 @@ It additionally add random noise from a standard normal distribution. To run it,
 >> cosNoiseData("data/example.csv")
 ```
 
-The format consists of an index (1-50 days) and the corresponding noisy cosine values. With no noise, we have a basic cosine curve:
+The format consists of an index (1-50 days) and the corresponding noisy cosine values. With no noise, we have a basic cosine curve (cut off at 50 days, where the period of the curve is 60 days):
 
 ![image](plots/data_no_noise.png)
 
@@ -40,7 +40,7 @@ Configs look like the above `configs/config_hp_ridge.csv`. There are three colum
 
 `mean_value_line` is a simple yes or no for the script to fit a horizontal line corresponding to the mean value of the data. 
 
-`data_trend_type_fit` can take on 'poly' or 'hp_ridge' as its value. So far, this is also the only row with comments, which can be an underscore separated list of hyperparameters for the fitting algorithm (integers for 'poly', floats for 'hp_ridge').
+`data_trend_type_fit` can take on 'poly' or 'hp_ridge' as its value. So far, this is also the only row with comments, which can be an underscore separated list of hyperparameters for the fitting algorithm (integers for 'poly', floats for 'hp_ridge'). The fitted line for each hyperparameter value will show up on the same plot for comparison.
 
 `xlabel` and `ylabel` take string inputs in the 'value' column.
 
@@ -51,7 +51,7 @@ This section will go over the two algorithms used to fit trend lines to the grou
 ### Polynomial Fit
 ![image](plots/poly_fit2.png)
 
-This algorithm fits a polynomial of specified order (1-3 shown in the plot) to the ground truth points. In the plot above, the second order polynomial seems to best capture the curve of the cosine function over this domain, with the third order function slightly overfitting with an unnecessary inflection point around day 21.
+This algorithm fits a polynomial of specified order (1-3 shown in the plot) to the ground truth points. In the plot above, the second order polynomial seems to best capture the curve of the cosine function over this domain, with the third order function slightly overfitting with an unnecessary inflection point around day 21. Intuitively, this makes sense since the cosine most resembles a parabola along this subset of its domain. 
 
 ### Hodrick-Prescott Filter Ridge Regression
 ![image](plots/hp_ridge_fit2.png)
